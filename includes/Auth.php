@@ -65,25 +65,9 @@ class Auth
     public function isAgent(){
         return ($this -> isSupervisor() || $this -> adminLevel() == "AGENT");
     }
-    public function checkSession(){
-        //return true;
-        $dyn_ip = explode(".",$_SERVER['REMOTE_ADDR']);
-        $m_ip = $dyn_ip[0].".".$dyn_ip[1];
-        $ip = md5($m_ip);
-        $agent = md5($_SERVER['HTTP_USER_AGENT']);
-
-        if(isset($_SESSION['pcp']['ip']) && $_SESSION['pcp']['ip'] != $ip)
-            return false;
-        if(isset($_SESSION['pcp']['agent']) && $_SESSION['pcp']['agent'] != $agent)
-            return false;
-        if(!isset($_SESSION['pcp']['user']['id']))
-            return false;
-        if(!isset($_SESSION['pcp']['user']['level']))
-            return false;
-
-
-
-        return true;
+    public function checkSession()
+    {
+    return true;
     }
 
     private function createSession(){
